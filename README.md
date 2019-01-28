@@ -39,10 +39,10 @@ Maybe I'll make a pip package when I have some time.
 
 ## Thanks & disclaimer
 
-A big thank you to all people behind:
+A big thank you to the developers of 
 
-* [nltk](http://www.nltk.org/)
-* [pyspellchecker](https://pypi.org/project/pyspellchecker/)
+* [nltk](http://www.nltk.org/) : python natural language toolkit
+* [pyspellchecker](https://pypi.org/project/pyspellchecker/) : python spell checker
 
 I made this real fast, and the script is not perfect yet. Please don't hesitate to send a PR. 
 
