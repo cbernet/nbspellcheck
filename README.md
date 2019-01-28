@@ -1,4 +1,4 @@
-# npspellcheck : 
+# npspellcheck  
 
 **spell checking jupyter notebooks**
 
@@ -18,26 +18,17 @@ However, this extension is currently not able to suggest corrections, and is onl
 
 Since I write blog posts based on jupyter notebooks in French, I came up with a small script for spell checking. 
 
+Installation: 
+
+```
+pip install nbspellcheck
+```
+
 Example of use:
 
 ```
 nbspellcheck.py my_jupyter_notebook.ipynb -l fr
 ```
-
-## Installation
-
-This script requires:
-
-* python 3
-* [nltk](http://www.nltk.org/)
-* [pyspellchecker](https://pypi.org/project/pyspellchecker/)
-* termcolor
-
-All of that can be installed easily with Anaconda and pip.
-
-Maybe I'll make a pip package when I have some time.
-
-## Thanks & disclaimer
 
 A big thank you to the developers of 
 
