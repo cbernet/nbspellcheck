@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="nbspellcheck-cbernet",
+    name="nbspellcheck",
     version="0.0.3",
     author="Colin Bernet",
     author_email="colin.bernet@gmail.com",
