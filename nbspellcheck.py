@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import json
 import sys
 import os 
@@ -8,7 +10,7 @@ from spellchecker import SpellChecker
 from termcolor import cprint
 
 def print_highlight(line, words):
-    # import pdb; pdb.set_trace()
+    '''Print the line, highlighting mis-spelled words'''
     for word in line.split():
         # if word in words:
         printed = False
@@ -25,6 +27,15 @@ def print_highlight(line, words):
     sys.stdout.write('\n')
             
 def handle_word(word):
+    '''Deal with a mispelled workd.
+
+    One can either: 
+    - ignore the word
+    - learn the word
+    - accept the suggested word
+    - propose a new word
+    - stop processing
+    '''
     if word in ignored_words:
         return
     if len(word)>10:
@@ -66,6 +77,7 @@ def handle_word(word):
 
 
 def update_line(line, word, new_word):
+    '''Update the line by changing word by new_word.'''
     notebook_updated = True
     if word.isupper():
         new_word = new_word.upper()
@@ -74,6 +86,7 @@ def update_line(line, word, new_word):
 
 
 def check(cell):
+    '''Spell check one markdown cell'''
     lines = cell['source']
     for i, line in enumerate(lines):
         # using casual tokenize to get rid of urls and emojis
@@ -93,7 +106,12 @@ def check(cell):
             cell['source'][i] = line
 
 def exit():
-    # save dictionnary
+    '''Exit the program. 
+    
+    The user is offered the possibility to save the dictionary, 
+    and the modified notebook. Please note that the notebook 
+    is modified in place
+    '''
     done_something = False
     if len(learnt_words):
         done_something = True
@@ -123,20 +141,30 @@ def exit():
     
 
 if __name__ == '__main__':
-
+    '''Run spell checking on an ipython notebook 
+'''
     from optparse import OptionParser
     parser = OptionParser()
+    parser.set_usage('''usage: %prog [options] <jupyter_notebook>
+
+Spell check jupyter notebook.
+''')
+
     parser.add_option("-l", "--language",
                           dest="language", default='en',
-                          help="specify language")
+                          help="specify language (fr or en for now, but others can be added easily)")
     (options, args) = parser.parse_args()
 
+    if len(args) != 1:
+        parser.print_usage()
+        sys.exit(1)
+    
     if options.language not in ['fr','en']:
         print('language should be set to fr or en')
         sys.exit(1)
 
     notebook = None
-    input_fname = sys.argv[1]
+    input_fname = args[0]
     with open(input_fname) as finput:
         notebook = json.load(finput)
 
