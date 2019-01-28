@@ -44,5 +44,7 @@ A big thank you to the developers of
 * [nltk](http://www.nltk.org/) : python natural language toolkit
 * [pyspellchecker](https://pypi.org/project/pyspellchecker/) : python spell checker
 
-I made this real fast, and the script is not perfect yet. Please don't hesitate to send a PR. 
+that are doing all the heavy lifting. 
+
+I made this real fast, and the user interface can be improved. Please don't hesitate to send a PR. 
 
