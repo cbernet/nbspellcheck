@@ -185,7 +185,7 @@ Spell check jupyter notebook.
     cells = notebook['cells']
     cells_md = [cell for cell in cells if cell['cell_type'] == 'markdown']
 
-    for cell in cells:
+    for cell in cells_md:
         check(cell)
 
     exit()
